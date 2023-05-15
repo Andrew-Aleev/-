@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница</title>
+     {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+</head>
+<body>
+<form action="{% url 'anketa' %}" method="post">
+  {% csrf_token %}
+    <!--<p>Ниже url</p>-->
+    <!--<p>{{url}}</p>-->
+    <!--<p>Выше url</p>-->
+
+<!--  {% for anketa in anketa %}
+   <p>{{anketa.user}}</p>
+  <label for="punctuality" class="review-label">{{anketa.number1}}:</label>
+  <select name="punctuality" id="punctuality" class="review-select">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select><br>
+
+  <label for="cleanliness" class="review-label">{{anketa.number2}}:</label>
+  <select name="cleanliness" id="cleanliness" class="review-select">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select><br>
+
+  <label for="technical_condition" class="review-label">{{anketa.number3}}:</label>
+  <select name="technical_condition" id="technical_condition" class="review-select">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select><br>
+
+  <label for="driver_behavior" class="review-label">{{anketa.number4}}:</label>
+  <select name="driver_behavior" id="driver_behavior" class="review-select">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select><br>
+
+  <label for="payment_system" class="review-label">{{anketa.number5}}:</label>
+  <select name="payment_system" id="payment_system" class="review-select">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select><br>
+
+{%endfor%}-->
+
+          {% for f in form %}
+         <p>
+             {%if f.label == 'Number1'%}
+             {%for anketa in anketa%}
+            <label for="{{f.id_for_label}}" class="form-label">{{anketa.number1}}:</label>
+            {{f}}
+             {%endfor%}
+             {%endif%}
+             {%if f.label == 'Number2'%}
+             {%for anketa in anketa%}
+            <label for="{{f.id_for_label}}" class="form-label">{{anketa.number2}}:</label>
+            {{f}}
+             {%endfor%}
+             {%endif%}
+             {%if f.label == 'Number3'%}
+             {%for anketa in anketa%}
+            <label for="{{f.id_for_label}}" class="form-label">{{anketa.number3}}:</label>
+            {{f}}
+             {%endfor%}
+             {%endif%}
+             {%if f.label == 'Number4'%}
+             {%for anketa in anketa%}
+            <label for="{{f.id_for_label}}" class="form-label">{{anketa.number4}}:</label>
+            {{f}}
+             {%endfor%}
+             {%endif%}
+             {%if f.label == 'Number5'%}
+             {%for anketa in anketa%}
+            <label for="{{f.id_for_label}}" class="form-label">{{anketa.number5}}:</label>
+            {{f}}
+              {%endfor%}
+             {%endif%}
+             {%if f.label == 'Отзыв'%}
+             <div class="form-error">{{form.non_field_errors}}</div>
+          <label>Напишите дополнительный текст о поездке:</label><br>
+
+            <label for="{{f.id_for_label}}" class="form-label">{{f.label}}:</label>
+            {{f}}
+             {%endif%}
+          </p>
+
+          <div class="form-error">{{f.errors}}</div>
+          {% endfor %}
+
+
+    <p>{{o.user}}{{o.text}}</p>
+
+
+  <input hidden class = "otzov_by" name="otzov_by" value="{{ otzov_by }}">
+  <!-- остальные поля формы -->
+
+
+
+
+
+  <input type="submit" value="Отправить" class="review-submit-btn">
+</form>
+</body>
+
+</html>

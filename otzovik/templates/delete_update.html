@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Удаление транспорта</title>
+</head>
+<body>
+<form action="{% url 'transport' %}" method="post">
+          {% csrf_token %}
+
+
+          <button type="submit">Удалить транспорт</button>
+        </form>
+
+</body>
+</html>
